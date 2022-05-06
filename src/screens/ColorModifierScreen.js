@@ -37,21 +37,21 @@ const ColorModifierScreen = () => {
         colorName='Red'
         colorValue={red}
         onColorChange={(colorName, value) =>
-          dispatch({ colorName: colorName, colorValue: sanitizedValue(value) })
+          dispatch({ type: colorName, payload: sanitizedValue(value) })
         }
       />
       <ColorIncrementorComponent
         colorName='Green'
         colorValue={green}
         onColorChange={(colorName, value) =>
-          dispatch({ colorName: colorName, colorValue: sanitizedValue(value) })
+          dispatch({ type: colorName, payload: sanitizedValue(value) })
         }
       />
       <ColorIncrementorComponent
         colorName='Blue'
         colorValue={blue}
         onColorChange={(colorName, value) =>
-          dispatch({ colorName: colorName, colorValue: sanitizedValue(value) })
+          dispatch({ type: colorName, payload: sanitizedValue(value) })
         }
       />
     </View>
