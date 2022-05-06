@@ -12,13 +12,13 @@ const ColorIncrementorComponent = ({
       <Button
         title={`Increase ${colorName}`}
         onPress={() => {
-          onColorChange(colorValue + 10);
+          onColorChange(colorName, colorValue + 10);
         }}
       />
       <Button
         title={`Decrease ${colorName}`}
         onPress={() => {
-          onColorChange(colorValue - 10);
+          onColorChange(colorName, colorValue - 10);
         }}
       />
     </View>

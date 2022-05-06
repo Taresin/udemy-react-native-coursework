@@ -1,11 +1,29 @@
 import { StyleSheet, Text, View, Button } from "react-native";
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 import ColorIncrementorComponent from "../components/ColorIncrementorComponent";
 
 const ColorModifierScreen = () => {
-  const [red, setRed] = useState(randomValue);
-  const [green, setGreen] = useState(randomValue);
-  const [blue, setBlue] = useState(randomValue);
+  const reducer = (state, action) => {
+    switch (action.colorName) {
+      case "Red":
+        return { ...state, red: action.colorValue };
+      case "Green":
+        return { ...state, green: action.colorValue };
+      case "Blue":
+        return { ...state, blue: action.colorValue };
+      default:
+        return state;
+    }
+  };
+
+  const [state, dispatch] = useReducer(reducer, {
+    red: randomValue(),
+    green: randomValue(),
+    blue: randomValue(),
+  });
+
+  const { red, green, blue } = state;
+
   return (
     <View>
       <View
@@ -18,17 +36,23 @@ const ColorModifierScreen = () => {
       <ColorIncrementorComponent
         colorName='Red'
         colorValue={red}
-        onColorChange={(value) => setRed(sanitizedValue(value))}
+        onColorChange={(colorName, value) =>
+          dispatch({ colorName: colorName, colorValue: sanitizedValue(value) })
+        }
       />
       <ColorIncrementorComponent
         colorName='Green'
         colorValue={green}
-        onColorChange={(value) => setGreen(sanitizedValue(value))}
+        onColorChange={(colorName, value) =>
+          dispatch({ colorName: colorName, colorValue: sanitizedValue(value) })
+        }
       />
       <ColorIncrementorComponent
         colorName='Blue'
         colorValue={blue}
-        onColorChange={(value) => setBlue(sanitizedValue(value))}
+        onColorChange={(colorName, value) =>
+          dispatch({ colorName: colorName, colorValue: sanitizedValue(value) })
+        }
       />
     </View>
   );
