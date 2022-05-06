@@ -4,13 +4,13 @@ import ColorIncrementorComponent from "../components/ColorIncrementorComponent";
 
 const ColorModifierScreen = () => {
   const reducer = (state, action) => {
-    switch (action.colorName) {
+    switch (action.type) {
       case "Red":
-        return { ...state, red: action.colorValue };
+        return { ...state, red: action.payload };
       case "Green":
-        return { ...state, green: action.colorValue };
+        return { ...state, green: action.payload };
       case "Blue":
-        return { ...state, blue: action.colorValue };
+        return { ...state, blue: action.payload };
       default:
         return state;
     }
