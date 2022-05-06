@@ -1,5 +1,6 @@
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
+import ColorModifierScreen from "./src/screens/ColorModifierScreen";
 import ColorScreen from "./src/screens/ColorScreen";
 import ComponentsScreen from "./src/screens/ComponentsScreen";
 import CounterScreen from "./src/screens/CounterScreen";
@@ -17,9 +18,10 @@ const navigator = createStackNavigator(
     Image: ImageScreen,
     Counter: CounterScreen,
     Color: ColorScreen,
+    ColorMod: ColorModifierScreen,
   },
   {
-    initialRouteName: "Color",
+    initialRouteName: "ColorMod",
     defaultNavigationOptions: {
       title: "Sample App",
     },
